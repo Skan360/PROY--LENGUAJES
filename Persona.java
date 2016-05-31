@@ -7,12 +7,12 @@ public class Persona
 
 	public void CapturaDatos()
 	{
-		nombre=Teclado.LeeCadena("Ingrese su nombre: ");
-		primer_apellido = Teclado.LeeCadena("Ingrese su primer apellido: ");
-		segundo_apellido = Teclado.LeeCadena("Ingrese su segundo apellido: ");
-		fecha_nac= Teclado.LeeCadena("Ingrese su fecha de naciemiento: ");
-		sexo = Teclado.LeeCadena("Ingrese su sexo  M / F: ");
-		estado_nac = Teclado.LeeCadena("Ingrese el estado de procedencia: ");
+		nombre=ValidaCadena(Teclado.LeeCadena("Ingrese su nombre: "));
+		primer_apellido =ValidaCadena(Teclado.LeeCadena("Ingrese su primer apellido: "));
+		segundo_apellido =ValidaCadena(Teclado.LeeCadena("Ingrese su segundo apellido: "));
+		fecha_nac=ValidaCadena(Teclado.LeeCadena("Ingrese su fecha de naciemiento: "));
+		sexo =ValidaCadena(Teclado.LeeCadena("Ingrese su sexo  M / F: "));
+		estado_nac=ValidaCadena(Teclado.LeeCadena("Ingrese el estado de procedencia: "));
 	}
 
 	public void CalculaCURP()
