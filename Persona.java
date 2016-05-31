@@ -25,8 +25,23 @@ public class Persona
 
 	}
 
-	public boolean ValidaCadena(String cadena)
+	public void ValidaCadena(String cadena)
 	{
+		boolean valida= false;
+		cadena=cadena.replace(" ","");
+		cadena=cadena.toUpperCase();
+
+		do
+		{
+			for(int i=0;i<cadena.length();i++)
+        		if(!((cadena.charAt(i) >='A' && cadena.charAt(i) <= 'Z') || (cadena.charAt(i)=='Ñ' || cadena.charAt(i)== ','|| texto.charAt(i)==' ')))
+         		{
+                    System.out.println("EL TEXTO NO ES VALIDO  =/ ");
+                    return true;
+                 }        
+      }
+
+		}while(valida);
 
 	}
 }
