@@ -7,12 +7,43 @@ public class Persona
 
 	public void CapturaDatos()
 	{
-		nombre=ValidaCadena(Teclado.LeeCadena("Ingrese su nombre(s): "));
-		primer_apellido =ValidaCadena(Teclado.LeeCadena("Ingrese su primer apellido: "));
-		segundo_apellido =ValidaCadena(Teclado.LeeCadena("Ingrese su segundo apellido: "));
-		/*fecha_nac=ValidaCadena(Teclado.LeeCadena("Ingrese su fecha de naciemiento: "));
-		sexo =ValidaCadena(Teclado.LeeCadena("Ingrese su sexo  M / F: "));
-		estado_nac=ValidaCadena(Teclado.LeeCadena("Ingrese el estado de procedencia: "));*/
+		do
+		{
+			nombre=Teclado.LeeCadena("Ingrese su nombre(s): ");
+			nombre=nombre.replace(" ","").toUpperCase();
+			
+		}while(ValidaCadena(nombre));
+		do
+		{
+			primer_apellido =Teclado.LeeCadena("Ingrese su primer apellido: ");
+			primer_apellido=primer_apellido.replace(" ","").toUpperCase();
+			
+		}while(ValidaCadena(primer_apellido));
+		do
+		{
+			segundo_apellido =Teclado.LeeCadena("Ingrese su segundo apellido: ");
+			segundo_apellido=segundo_apellido.replace(" ","").toUpperCase();
+			
+		}while(ValidaCadena(segundo_apellido));
+		do
+		{
+			fecha_nac=Teclado.LeeCadena("Ingrese su fecha de naciemiento: ");
+			fecha_nac=fecha_nac.replace(" ","").toUpperCase();
+			
+		}while(ValidaCadena(fecha_nac));
+		do
+		{
+			sexo =Teclado.LeeCadena("Ingrese su sexo  M / F: ");
+			sexo=sexo.replace(" ","").toUpperCase();
+			
+		}while(ValidaSexo(sexo));
+		do
+		{
+			estado_nac=Teclado.LeeCadena("Ingrese el estado de procedencia: ");
+			estado_nac=estado_nac.replace(" ","").toUpperCase();
+			
+		}while(ValidaCadena(estado_nac));
+		
 	}
 
 	public void CalculaCURP()
@@ -25,25 +56,29 @@ public class Persona
 	{
 
 	}
-
-	public String ValidaCadena(String cadena)
+//Métodos de validaciones para  el texto ingresado
+	public boolean ValidaSexo(String texto)
 	{
-		boolean valida= true;
-		cadena=cadena.replace(" ","");
-		cadena=cadena.toUpperCase();
-		System.out.println(cadena);
+		for(int i=0;i<texto.length();i++)
+        if(!(texto.charAt(i) =='M' || texto.charAt(i) <='H') )
+         {
+            System.out.println("EL TEXTO NO ES VALIDO  =/ ingresa H o M segun sea el caso");
+            return true;
+         }
+        return false;
+	}
 
-		do
-		{
-			for(int i=0;i<cadena.length();i++)
-        		if(!((cadena.charAt(i) >='A' && cadena.charAt(i) <= 'Z') || (cadena.charAt(i)==165)));
-         		{
-                    System.out.println("\nEL TEXTO NO ES VALIDO  =/ ASEGURATE DE NO USAR ACENTOS O SIMBOLOS ESPECIALES");
-                    valida = false;
-                 }    
+	public boolean ValidaCadena(String texto)
+	{
+		boolean aux=false;
+		for(int i=0;i<texto.length();i++)
+        if(!(texto.charAt(i) >='A' && texto.charAt(i) <='Z') )
+         {
+            System.out.println("EL TEXTO NO ES VALIDO  =/ ");
+            aux=true;
+         }  
 
-		}while(valida);
-		return cadena;
+         return aux;    		
 	}
 
 	//Métodos para calcular el CURP
