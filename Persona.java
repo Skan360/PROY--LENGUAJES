@@ -27,10 +27,10 @@ public class Persona
 		}while(ValidaCadena(segundo_apellido));
 		do
 		{
-			fecha_nac=Teclado.LeeCadena("Ingrese su fecha de naciemiento: ");
-			fecha_nac=fecha_nac.replace(" ","").toUpperCase();
-			
-		}while(ValidaCadena(fecha_nac));
+			fecha_nac=Teclado.LeeCadena("Ingrese su fecha de naciemiento  ejemplo 13/08/1999 : ");
+			fecha_nac=fecha_nac.replace(" ","");
+			System.out.println(fecha_nac);
+		}while(ValidaFecha(fecha_nac));
 		do
 		{
 			sexo =Teclado.LeeCadena("Ingrese su sexo  M / F: ");
@@ -49,10 +49,11 @@ public class Persona
 	public void CalculaCURP()
 	{	
 		
-
+		CURP= CalculaPozitionEins() + CalculaPozitionZwei() + "";
+		System.out.println(CURP);
 	}
 
-	public void CalculaRFC(String CP)
+	public void CalculaRFC()
 	{
 
 	}
@@ -72,7 +73,7 @@ public class Persona
 	{
 		boolean aux=false;
 		for(int i=0;i<texto.length();i++)
-        if(!(texto.charAt(i) >='A' && texto.charAt(i) <='Z') )
+        if(!(texto.charAt(i) >='A' && texto.charAt(i) <='Z'|| texto.charAt(i)==165) )
          {
             System.out.println("EL TEXTO NO ES VALIDO  =/ ");
             aux=true;
@@ -80,8 +81,21 @@ public class Persona
 
          return aux;    		
 	}
+	public boolean ValidaFecha(String texto)
+	{
+		for (int i=0;i<texto.length();i++ ) 
+			if(!(texto.charAt(i) >= '0' && texto.charAt(i) <= '9'|| texto.charAt(i)==47) )
+         		{
+            		System.out.println("EL TEXTO NO ES VALIDO  =/ ");
+            		i=texto.length();
+            		return true;
+         		}  
+		
 
-	//Métodos para calcular el CURP
+		return false;
+	}
+	
+//Métodos para calcular el CURP
 
 	public String CalculaPozitionEins()
 	{		
@@ -111,7 +125,14 @@ public class Persona
 
 	public String CalculaPozitionZwei()
 	{
-		return "";
+		String dia, mes, jahre;
+		String fecha;
+		String []aux =fecha_nac.split("/");
+		dia = aux[0];
+		mes = aux[1];
+		jahre = aux[2].charAt(2)+""+aux[2].charAt(3);
+
+		return (jahre + mes + "" + dia);
 	}
 
 	public String CalculaPozitionDrei()
