@@ -7,16 +7,17 @@ public class Persona
 
 	public void CapturaDatos()
 	{
-		nombre=ValidaCadena(Teclado.LeeCadena("Ingrese su nombre: "));
+		nombre=ValidaCadena(Teclado.LeeCadena("Ingrese su nombre(s): "));
 		primer_apellido =ValidaCadena(Teclado.LeeCadena("Ingrese su primer apellido: "));
 		segundo_apellido =ValidaCadena(Teclado.LeeCadena("Ingrese su segundo apellido: "));
-		fecha_nac=ValidaCadena(Teclado.LeeCadena("Ingrese su fecha de naciemiento: "));
+		/*fecha_nac=ValidaCadena(Teclado.LeeCadena("Ingrese su fecha de naciemiento: "));
 		sexo =ValidaCadena(Teclado.LeeCadena("Ingrese su sexo  M / F: "));
-		estado_nac=ValidaCadena(Teclado.LeeCadena("Ingrese el estado de procedencia: "));
+		estado_nac=ValidaCadena(Teclado.LeeCadena("Ingrese el estado de procedencia: "));*/
 	}
 
 	public void CalculaCURP()
-	{
+	{	
+		
 
 	}
 
@@ -43,4 +44,43 @@ public class Persona
 		}while(valida);
 		return cadena;
 	}
+
+	//Métodos para calcular el CURP
+
+	public String CalculaPozitionEins()
+	{		
+		char letrainicial=primer_apellido.charAt(0);
+		char primeravocal;
+		String parteins;
+		//Primer letra del nombre
+		char plnom= nombre.charAt(0);
+		//liapm = letra inicial del segundo apellido
+		char liapm=segundo_apellido.charAt(0);
+		int  indice=0;
+
+		for (int i=1;i<primer_apellido.length();i++ ) {
+			char aux= primer_apellido.charAt(i);
+			if( aux== 'A'|| aux=='E'|| aux == 'I'|| aux== 'O'|| aux=='U'){
+				indice=i;
+                i=primer_apellido.length();
+			}				
+		}
+		primeravocal=primer_apellido.charAt(indice);
+
+		parteins= letrainicial +""+ primeravocal + liapm + plnom;
+		
+		return parteins;
+
+	}
+
+	public String CalculaPozitionZwei()
+	{
+		return "";
+	}
+
+	public String CalculaPozitionDrei()
+	{
+		return "";
+	}
+
 }
