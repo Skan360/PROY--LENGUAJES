@@ -28,9 +28,10 @@ public class Persona
 
 	public String ValidaCadena(String cadena)
 	{
-		boolean valida= false;
+		boolean valida= true;
 		cadena=cadena.replace(" ","");
 		cadena=cadena.toUpperCase();
+		System.out.println(cadena);
 
 		do
 		{
@@ -38,7 +39,7 @@ public class Persona
         		if(!((cadena.charAt(i) >='A' && cadena.charAt(i) <= 'Z') || (cadena.charAt(i)==165)));
          		{
                     System.out.println("\nEL TEXTO NO ES VALIDO  =/ ASEGURATE DE NO USAR ACENTOS O SIMBOLOS ESPECIALES");
-                    valida= true;
+                    valida = false;
                  }    
 
 		}while(valida);
