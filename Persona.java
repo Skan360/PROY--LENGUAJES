@@ -21,15 +21,22 @@ public class Persona
 		}while(ValidaCadena(primer_apellido));				//valida cadena comprueba que los caracteres ingresados pertenescan 
 		do								//al abecedario, letras de la "a" a la "z"
 		{
+		/*se pide el segundo appellido, se quitan los espcios y se cambian todas las letras a MAYUSCULAS
+		con toUpperCase() */
 			segundo_apellido =Teclado.LeeCadena("Ingrese su segundo apellido: ");
 			segundo_apellido=segundo_apellido.replace(" ","").toUpperCase();
-			
+		/*Valida cadena comprueba que esta esta solo contenga letras de la "a" a la "z". devuelve FALSE en caso de 
+		de que la validacion sea correcta y TRUE si algun caracter no es letra y con esto vuelve a pedir los datos 
+		al ser true en la condicion del while*/	
 		}while(ValidaCadena(segundo_apellido));
 		do
 		{
+		/*se pide añ usuario su fecha de nacimiento con un formato especial dia/mes/año */
 			fecha_nac=Teclado.LeeCadena("Ingrese su fecha de naciemiento  ejemplo 13/08/1999 : ");
 			fecha_nac=fecha_nac.replace(" ","");
 			System.out.println(fecha_nac);
+		/* valida fecha comprueba que solo se ingresaran numeros del 0 al 9 y el caracter "/" 
+		devuelve FALSE si esto es correcto y TRUE si encontro algun error*/
 		}while(ValidaFecha(fecha_nac));
 		do
 		{
@@ -50,7 +57,7 @@ public class Persona
 	{	
 		
 		CURP= CalculaPozitionEins() + CalculaPozitionZwei() + "";
-		System.out.println(CURP);
+		System.out.println(CURP);""
 	}
 
 	public void CalculaRFC()
