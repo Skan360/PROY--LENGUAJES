@@ -1,25 +1,25 @@
 public class Persona
 {
-	private  String nombre, primer_apellido, segundo_apellido;
-	private  String CURP, RFC, CLVEE;
-	private  String fecha_nac,sexo, estado_nac, homonimia;
+	private  String nombre, primer_apellido, segundo_apellido;		//Declaracion de las 
+	private  String CURP, RFC, CLVEE;					// variables que se necesitaran
+	private  String fecha_nac,sexo, estado_nac, homonimia;			//
 	private  int    d_verif;
 
-	public void CapturaDatos()
+	public void CapturaDatos()					//funcion que pide los datos del usuario
 	{
 		do
 		{
-			nombre=Teclado.LeeCadena("Ingrese su nombre(s): ");
-			nombre=nombre.replace(" ","").toUpperCase();
-			
-		}while(ValidaCadena(nombre));
-		do
+			nombre=Teclado.LeeCadena("Ingrese su nombre(s): ");	//se lee el nombre 
+			nombre=nombre.replace(" ","").toUpperCase();		//se quitan los espacios que pueda tener 
+										//y se convierte a mayusculas todo el nombre
+		}while(ValidaCadena(nombre));					//valida cadena devuelve false si la validacion	fue exitosa, 
+		do								//en caso contrario regresa al do
 		{
-			primer_apellido =Teclado.LeeCadena("Ingrese su primer apellido: ");
-			primer_apellido=primer_apellido.replace(" ","").toUpperCase();
+			primer_apellido =Teclado.LeeCadena("Ingrese su primer apellido: ");	//se lee el primer apellido
+			primer_apellido=primer_apellido.replace(" ","").toUpperCase();		//se quitan espacios y se pasa a mayusculas
 			
-		}while(ValidaCadena(primer_apellido));
-		do
+		}while(ValidaCadena(primer_apellido));				//valida cadena comprueba que los caracteres ingresados pertenescan 
+		do								//al abecedario, letras de la "a" a la "z"
 		{
 			segundo_apellido =Teclado.LeeCadena("Ingrese su segundo apellido: ");
 			segundo_apellido=segundo_apellido.replace(" ","").toUpperCase();
